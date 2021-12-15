@@ -1,27 +1,10 @@
 <?php
 
-require 'function.php';
+session_start();
 
-if(isset($_POST['login2'])){
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-
-    $cekdatabase = mysqli_query($conn, "SELECT * FROM login where email = '$email' and password = '$password'");
-
-    $hitung = mysqli_num_rows($cekdatabase);
-
-    if ($hitung>0){
-        $_SESSION['log'] = 'True';
-        header('location: progres.php');
-    }else {
-        header('location: Login.php');
-    };
-};
-
-if(!isset($_SESSION['log'])){
-
-} else {
-    header('location: progres.php');
+if ( isset($_SESSION["login"]) ) {
+    header('Location: admin.php');
+    exit;
 }
 
 ?>
@@ -43,9 +26,9 @@ if(!isset($_SESSION['log'])){
     </head>
     <body class="d-flex flex-column">
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
                 <div class="container px-5">
-                    <a class="navbar-brand" href="index.php">Garden Village</a>
+                    <a class="navbar-brand" href="login.php">Garden Village</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -58,6 +41,9 @@ if(!isset($_SESSION['log'])){
                     </div>
                 </div>
             </nav>
+            <br>
+            <br>
+            <br>
         <div id="layoutAuthentication">
                 <div id="layoutAuthentication_content">
                     <main>
@@ -67,7 +53,7 @@ if(!isset($_SESSION['log'])){
                                     <div class="card shadow-lg border-0 rounded-lg mt-5">
                                         <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
                                         <div class="card-body">
-                                            <form method="post">
+                                            <form method="POST" action="cek.php">
                                                 <div class="form-floating mb-3">
                                                     <input class="form-control" name="email" id="inputEmail" type="email" placeholder="name@example.com" />
                                                     <label for="inputEmail">Email address</label>
@@ -76,10 +62,18 @@ if(!isset($_SESSION['log'])){
                                                     <input class="form-control" name="password" id="inputPassword" type="password" placeholder="Password" />
                                                     <label for="inputPassword">Password</label>
                                                 </div>
-                                                
+                                                <div class="form-label">
+                                                    <select class="form-select" name="level">
+                                                        <option value="developer">Developer</option>
+                                                        <option value="customer">Customer</option>
+                                                        <option value="pln">PLN</option>
+                                                        <option value="pdam">PDAM</option>
+                                                        <option value="material">Material</option>
+                                                    </select>
+                                                </div>
                                                 <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                                     
-                                                    <button class="btn btn-primary" name="login2" >Login</button>
+                                                    <button type="submit" class="btn btn-primary" name="login" >Login</button>
                                                 </div>
                                             </form>
                                         </div>

@@ -22,7 +22,7 @@ require  'function.php';
     <body class="d-flex flex-column h-100">
         <main class="flex-shrink-0">
             <!-- Navigation-->
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
                 <div class="container px-5">
                     <a class="navbar-brand" href="index.php">Garden Village</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -64,23 +64,23 @@ require  'function.php';
                             <div class="row gx-5 row-cols-1 row-cols-md-2">
                                 <div class="col mb-5 h-100">
                                     <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
-                                    <h2 class="h5">Lihat Spesifikasi</h2>
-                                    <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
+                                    <h2 class="h5">1. Lihat Spesifikasi</h2>
+                                
                                 </div>
                                 <div class="col mb-5 h-100">
                                     <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
-                                    <h2 class="h5">Datang Ke Kantor</h2>
-                                    <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
+                                    <h2 class="h5">2. Datang Ke Kantor</h2>
+                                    
                                 </div>
                                 <div class="col mb-5 mb-md-0 h-100">
                                     <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
-                                    <h2 class="h5">Administrasi</h2>
-                                    <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
+                                    <h2 class="h5">3. Administrasi</h2>
+                                    
                                 </div>
                                 <div class="col h-100">
                                     <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
-                                    <h2 class="h5">Pantau Progres</h2>
-                                    <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
+                                    <h2 class="h5">4. Pantau Progres</h2>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -119,20 +119,23 @@ require  'function.php';
                         </div>
                     </div>
                     <div class="row gx-5">
+                        <?php
+                        
+                        ?>
                         <div class="col-lg-4 mb-5">
                             <div class="card h-100 shadow border-0">
-                                <img class="card-img-top" src="https://dummyimage.com/600x350/ced4da/6c757d" alt="..." />
+                                <img height="200" class="card-img-top" src="assets/img/Type30.jpg" alt="..." />
                                 <div class="card-body p-4">
-                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">News</div>
-                                    <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Blog post title</h5></a>
-                                    <p class="card-text mb-0">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">Rp 621.000.000</div>
+                                    <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Bougenville</h5></a>
+                                    <p class="card-text mb-0">Type 1 (5 x 12 Meter) <br> Luas Tanah : 60 m2. <br> Luas Bangunan : 55 m2 <br> 2 kamar tidur <br> 1 kamar mandi <br> Dapur, Ruang Tamu, Garasi.</p>
                                 </div>
                                 <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
                                     <div class="d-flex align-items-end justify-content-between">
                                         <div class="d-flex align-items-center">
                                             <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
                                             <div class="small">
-                                                <div class="fw-bold">Kelly Rowan</div>
+                                                <div class="fw-bold">Abdil Aziez</div>
                                                 <div class="text-muted">March 12, 2021 &middot; 6 min read</div>
                                             </div>
                                         </div>
@@ -142,11 +145,11 @@ require  'function.php';
                         </div>
                         <div class="col-lg-4 mb-5">
                             <div class="card h-100 shadow border-0">
-                                <img class="card-img-top" src="https://dummyimage.com/600x350/adb5bd/495057" alt="..." />
+                                <img height="200" class="card-img-top" src="assets/img/Type36.jpg" alt="..." />
                                 <div class="card-body p-4">
-                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">Media</div>
-                                    <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Another blog post title</h5></a>
-                                    <p class="card-text mb-0">This text is a bit longer to illustrate the adaptive height of each card. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">Rp 868.000.000</div>
+                                    <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Anggrek</h5></a>
+                                    <p class="card-text mb-0">Type 2 ( 5,5 x 15 ) <br> Luas Tanah : 82,5 m2 <br> Luas Bangunan : 68 m2 <br> 3 kamar tidur <br> 2 kamar mandi <br> Dapur, Ruang Tamu, Garasi.</p>
                                 </div>
                                 <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
                                     <div class="d-flex align-items-end justify-content-between">
@@ -163,11 +166,11 @@ require  'function.php';
                         </div>
                         <div class="col-lg-4 mb-5">
                             <div class="card h-100 shadow border-0">
-                                <img class="card-img-top" src="https://dummyimage.com/600x350/6c757d/343a40" alt="..." />
+                                <img height="200" class="card-img-top" src="assets/img/Type40.jpg" alt="..." />
                                 <div class="card-body p-4">
-                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">News</div>
-                                    <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">The last blog post title is a little bit longer than the others</h5></a>
-                                    <p class="card-text mb-0">Some more quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">Rp 1.058.000.000 </div>
+                                    <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">Kenanga</h5></a>
+                                    <p class="card-text mb-0">Type 3 ( 6,5 x 15 ) <br> Luas Tanah : 97,5 m2. <br> Luas Bangunan : 88 m2 <br> 3 kamar tidur <br> 2 kamar mandi <br> Dapur, Ruang Tamu, Garasi.</p>
                                 </div>
                                 <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
                                     <div class="d-flex align-items-end justify-content-between">

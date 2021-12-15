@@ -22,7 +22,7 @@ require  'function.php';
     <body class="d-flex flex-column">
         <main class="flex-shrink-0">
             <!-- Navigation-->
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
                 <div class="container px-5">
                     <a class="navbar-brand" href="index.php">Garden Village</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -43,9 +43,9 @@ require  'function.php';
                     <div class="row justify-content-center">
                         <div class="col-lg-8 col-xxl-6">
                             <div class="text-center my-5">
-                                <h1 class="fw-bolder mb-3">Our mission is to make building websites easier for everyone.</h1>
-                                <p class="lead fw-normal text-muted mb-4">Start Bootstrap was built on the idea that quality, functional website templates and themes should be available to everyone. Use our open source, free products, or support us by purchasing one of our premium products or services.</p>
-                                <a class="btn btn-primary btn-lg" href="#scroll-target">Read our story</a>
+                                <h1 class="fw-bolder mb-3">Selamat datang di situs The Garden Village.</h1>
+                                <p class="lead fw-normal text-muted mb-4">Bersama kami mari membangun hunian nyaman yang anda inginkan. Berikut merupakan langkah dalam membangun rumah di The Village Garden</p>
+                                <a class="btn btn-primary btn-lg" href="#scroll-target">Let's Go</a>
                             </div>
                         </div>
                     </div>
@@ -55,10 +55,10 @@ require  'function.php';
             <section class="py-5 bg-light" id="scroll-target">
                 <div class="container px-5 my-5">
                     <div class="row gx-5 align-items-center">
-                        <div class="col-lg-6"><img class="img-fluid rounded mb-5 mb-lg-0" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div>
+                        <div class="col-lg-6"><img class="img-fluid rounded mb-5 mb-lg-0" src="assets/img/langkah 1.svg" alt="..." /></div>
                         <div class="col-lg-6">
-                            <h2 class="fw-bolder">Our founding</h2>
-                            <p class="lead fw-normal text-muted mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto est, ut esse a labore aliquam beatae expedita. Blanditiis impedit numquam libero molestiae et fugit cupiditate, quibusdam expedita, maiores eaque quisquam.</p>
+                            <h2 class="fw-bolder">Lihat Spesifikasi</h2>
+                            <p class="lead fw-normal text-muted mb-0">Customer dapat melihat secara penuh spesifikasi Perumahan di The Dream House melalui website.</p>
                         </div>
                     </div>
                 </div>
@@ -67,16 +67,40 @@ require  'function.php';
             <section class="py-5">
                 <div class="container px-5 my-5">
                     <div class="row gx-5 align-items-center">
-                        <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div>
+                        <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0" src="assets/img/langkah 2.svg" alt="..." /></div>
                         <div class="col-lg-6">
-                            <h2 class="fw-bolder">Growth &amp; beyond</h2>
-                            <p class="lead fw-normal text-muted mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto est, ut esse a labore aliquam beatae expedita. Blanditiis impedit numquam libero molestiae et fugit cupiditate, quibusdam expedita, maiores eaque quisquam.</p>
+                            <h2 class="fw-bolder">Datang Ke Kantor</h2>
+                            <p class="lead fw-normal text-muted mb-0">Setelah anda melihat spesifikasi rumah, apabila tertarik anda dapat datang ke kantor untuk proses selanjutnya.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- About section three-->
+            <section class="py-5 bg-light" id="scroll-target">
+                <div class="container px-5 my-5">
+                    <div class="row gx-5 align-items-center">
+                        <div class="col-lg-6"><img class="img-fluid rounded mb-5 mb-lg-0" src="assets/img/langkah 3.svg" alt="..." /></div>
+                        <div class="col-lg-6">
+                            <h2 class="fw-bolder">Administrasi</h2>
+                            <p class="lead fw-normal text-muted mb-0">Jika tertarik untuk memiliki hunian di The Dream House, maka Customer cukup mengisi dan melengkapi persyaratan administrasi yang akan di sediakan oleh Developer.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- About section four-->
+            <section class="py-5">
+                <div class="container px-5 my-5">
+                    <div class="row gx-5 align-items-center">
+                        <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0" src="assets/img/langkah 4.svg" alt="..." /></div>
+                        <div class="col-lg-6">
+                            <h2 class="fw-bolder">Pantau Progres</h2>
+                            <p class="lead fw-normal text-muted mb-0">Customer dapat melihat dan monitoring pembangunan perumahan melalui website.</p>
                         </div>
                     </div>
                 </div>
             </section>
             <!-- Team members section-->
-            <section class="py-5 bg-light">
+            <!-- <section class="py-5 bg-light">
                 <div class="container px-5 my-5">
                     <div class="text-center">
                         <h2 class="fw-bolder">Our team</h2>
@@ -113,7 +137,7 @@ require  'function.php';
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> -->
         </main>
         <!-- Footer-->
         <footer class="bg-dark py-4 mt-auto">

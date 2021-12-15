@@ -1,7 +1,6 @@
 <?php
 
 require  'function.php';
-require 'cek2.php';
 
 ?>
 
@@ -23,7 +22,7 @@ require 'cek2.php';
     <body class="d-flex flex-column h-100">
         <main class="flex-shrink-0">
             <!-- Navigation-->
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
                 <div class="container px-5">
                     <a class="navbar-brand" href="index.php">Garden Village</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -44,24 +43,25 @@ require 'cek2.php';
                     <div class="row gx-5 justify-content-center">
                         <div class="col-lg-6">
                             <div class="text-center mb-5">
-                                <h1 class="fw-bolder">Project Title</h1>
-                                <p class="lead fw-normal text-muted mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab similique, ducimus ut alias sit accusamus illum, asperiores deserunt dolorum quaerat qui! Ab, quisquam explicabo magni dolores unde beatae quam a.</p>
+                                <h1 class="fw-bolder">Progres Pembangunan</h1>
+                                <p class="lead fw-normal text-muted mb-0">Disini anda dapat melihat progres pembangunan dari setiap bulan sudah sampai apa pengerjaannya.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="row gx-5">
-                        <div class="col-12"><img class="img-fluid rounded-3 mb-5" src="https://dummyimage.com/1300x700/343a40/6c757d" alt="..." /></div>
-                        <div class="col-lg-6"><img class="img-fluid rounded-3 mb-5" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div>
-                        <div class="col-lg-6"><img class="img-fluid rounded-3 mb-5" src="https://dummyimage.com/600x400/343a40/6c757d" alt="..." /></div>
+                    <div class="row justify-content-md-center">
+                        <div class="col-md-4"><img class="img-fluid rounded-3 mb-5" src="assets/img/proges 1.jpg" alt="..." /></div>
+                        <div class="col-md-4"><img class="img-fluid rounded-3 mb-5" src="assets/img/progres 2.jpg" alt="..." /></div>
+                        <div class="col-md-4"><img class="img-fluid rounded-3 mb-5" src="assets/img/progres 3.jpg" alt="..." /></div>
+                        <div class="col-md-4"><img class="img-fluid rounded-3 mb-5" src="assets/img/progres 4.jpg" alt="..." /></div>
                     </div>
                     <div class="row gx-5 justify-content-center">
                         <div class="col-lg-6">
                             <div class="text-center mb-5">
-                                <p class="lead fw-normal text-muted">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam deserunt architecto enim eos accusantium fugit recusandae illo iste dignissimos possimus facere ducimus odit voluptatibus exercitationem, ex laudantium illum voluptatum corporis.</p>
-                                <a class="text-decoration-none" href="#!">
+                                <p class="lead fw-normal text-muted">Semoga pelayanan kami dapat memberikan kenyamanan untuk anda memantau progres pembangunan rumah yang anda inginkan.</p>
+                                <!-- <a class="text-decoration-none" href="#!">
                                     View project
                                     <i class="bi-arrow-right"></i>
-                                </a>
+                                </a> -->
                             </div>
                         </div>
                     </div>

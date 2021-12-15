@@ -2,6 +2,7 @@
 
 require  'function.php';
 
+
 ?>
 
 <!DOCTYPE html>
@@ -17,12 +18,6 @@ require  'function.php';
         <link href="css/styles_admin.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     </head>
-    <?php
-
-    echo $_SESSION['login'];
-
-
-    ?>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
@@ -42,11 +37,11 @@ require  'function.php';
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Form Pembangunan
                             </a>
-                            <a class="nav-link" href="form_progres.php">
+                            <a class="nav-link" href="masuk.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Progres Pembangunan
                             </a>
-                            <a class="nav-link" href="administrasi.php">
+                            <a class="nav-link" href="keluar.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Administrasi
                             </a>
@@ -134,17 +129,15 @@ require  'function.php';
                                                     <!-- Modal body -->
                                                     <form method="post" enctype="multipart/form-data">
                                                         <div class="modal-body">
-                                                            <input type="text" name="namapelanggan" value="<?=$namapelanggan;?>" class="form-control" placeholder="Nama Pelanggan" required>
+                                                            <input type="text" name="namapelanggan" value="<?=$namapelanggan;?>" class="form-control" required>
                                                             <br>
-                                                            <textarea name="deskripsirumah" class="form-control" placeholder="Deskripsi Rumah"><?php echo $data['deskripsirumah'];?></textarea>
+                                                            <textarea name="deskripsirumah" class="form-control" id="comment" rows="5" placeholder="Deskripsi Rumah"><?php echo $data['deskripsirumah'];?></textarea>
                                                             <br>
-                                                            <textarea name="deskripsimaterial" class="form-control" placeholder="Deskripsi Material"><?php echo $data['deskripsimaterial'];?></textarea>
+                                                            <textarea name="deskripsimaterial" class="form-control" id="comment" rows="5" placeholder="Deskripsi Material"><?php echo $data['deskripsimaterial'];?></textarea>
                                                             <br>
-                                                            <textarea name="deskripsipdam" class="form-control" placeholder="Deskripsi PDAM"><?php echo $data['deskripsipdam'];?></textarea>
+                                                            <textarea name="deskripsipdam" class="form-control" id="comment" rows="5" placeholder="Deskripsi PDAM"><?php echo $data['deskripsipdam'];?></textarea>
                                                             <br>
-                                                            <textarea name="deskripsipln" class="form-control" placeholder="Deskripsi PLN"><?php echo $data['deskripsipln'];?></textarea>
-                                                            <br>
-                                                            <input type="file" name="fileToUpload" value="<?=$image;?> id="fileToUpload" class="form-control" required>
+                                                            <textarea name="deskripsipln" class="form-control" id="comment" rows="5" placeholder="Deskripsi PLN"><?php echo $data['deskripsipln'];?></textarea>
                                                             <br>
                                                             <input type="hidden" name="idb" value="<?=$idb;?>">
                                                             <button type="submit" class="btn btn-primary" name="updatebarang">Submit</button>
