@@ -2,6 +2,31 @@
 
 require  'function.php';
 
+if ( !isset($_SESSION["login"]) ) {
+    if($_SESSION['level'] == "developer"){
+        header('location:admin.php');
+    } elseif ($_SESSION['level'] == "customer") {
+        header('location:progres.php');
+    } elseif ($_SESSION['level'] == "material") {
+        header('location:admin_material.php');
+    } elseif ($_SESSION['level'] == "pln") {
+        header('location:admin_pln.php');
+    } elseif ($_SESSION['level'] == "pdam") {
+        header('location:admin_pdam.php');
+    }
+    exit;
+}
+
+if ($_SESSION['level'] == "customer") {
+    header('location:progres.php');
+} elseif ($_SESSION['level'] == "material") {
+    header('location:admin_material.php');
+} elseif ($_SESSION['level'] == "pln") {
+    header('location:admin_pln.php');
+} elseif ($_SESSION['level'] == "pdam") {
+    header('location:admin_pdam.php');
+}
+
 ?>
 
 <!DOCTYPE html>

@@ -2,6 +2,31 @@
 
 require  'function.php';
 
+if ( !isset($_SESSION["login"]) ) {
+    if($_SESSION['level'] == "developer"){
+        header('location:admin.php');
+    } elseif ($_SESSION['level'] == "customer") {
+        header('location:progres.php');
+    } elseif ($_SESSION['level'] == "material") {
+        header('location:admin_material.php');
+    } elseif ($_SESSION['level'] == "pln") {
+        header('location:admin_pln.php');
+    } elseif ($_SESSION['level'] == "pdam") {
+        header('location:admin_pdam.php');
+    }
+    exit;
+}
+
+if ($_SESSION['level'] == "developer") {
+    header('location:admin.php');
+} elseif ($_SESSION['level'] == "material") {
+    header('location:admin_material.php');
+} elseif ($_SESSION['level'] == "pln") {
+    header('location:admin_pln.php');
+} elseif ($_SESSION['level'] == "pdam") {
+    header('location:admin_pdam.php');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -31,8 +56,15 @@ require  'function.php';
                             <li class="nav-item"><a class="nav-link" href="index.php">Beranda</a></li>
                             <li class="nav-item"><a class="nav-link" href="langkah.php">Langkah</a></li>
                             <li class="nav-item"><a class="nav-link" href="progres.php">Progres</a></li>
-                            <li class="nav-item"><a class="nav-link" href="Login.php">Login</a></li>
-                            <li class="nav-item"><a class="nav-link" href="Logout.php">Logout</a></li>
+                            <?php 
+                            
+                            if(!$_SESSION['login']){
+                                echo '<li class="nav-item"><a class="nav-link" href="Login.php">Login</a></li>';
+                            } else {
+                                echo '<li class="nav-item"><a class="nav-link" href="Logout.php">Logout</a></li>';
+                            }
+
+                            ?>
                         </ul>
                     </div>
                 </div>
@@ -49,10 +81,31 @@ require  'function.php';
                         </div>
                     </div>
                     <div class="row justify-content-md-center">
-                        <div class="col-md-4"><img class="img-fluid rounded-3 mb-5" src="assets/img/proges 1.jpg" alt="..." /></div>
-                        <div class="col-md-4"><img class="img-fluid rounded-3 mb-5" src="assets/img/progres 2.jpg" alt="..." /></div>
-                        <div class="col-md-4"><img class="img-fluid rounded-3 mb-5" src="assets/img/progres 3.jpg" alt="..." /></div>
-                        <div class="col-md-4"><img class="img-fluid rounded-3 mb-5" src="assets/img/progres 4.jpg" alt="..." /></div>
+                        <?php
+                            $iduser = $_SESSION['iduser'];
+                            $ambilsemuadatanya = mysqli_query($conn,"SELECT * FROM masuk WHERE iduser = '$iduser'");
+                            $fetcharray1 = mysqli_fetch_array($ambilsemuadatanya);
+                            if($fetcharray1){
+                                $i=0;
+                                while($fetcharray = mysqli_fetch_array($ambilsemuadatanya)){
+                                    $i++;
+                                    $estimasi = $fetcharray['estimasi'];
+                                    $status = $fetcharray['status'];
+                                    $dokumentasi = $fetcharray['dokumentasi'];
+                                
+                        ?>
+
+                        <div class="col-md-4"><?=$fetcharray[0];?><img class="img-fluid rounded-3 mb-5" src="<?=$dokumentasi;?>" alt="..." /></div>
+
+                        <?php
+                                };
+                            }else {
+                        ?>
+                        <label for="">HALLO BELUM ADA DATA</label>
+                        <?php
+                        
+                            };
+                        ?>
                     </div>
                     <div class="row gx-5 justify-content-center">
                         <div class="col-lg-6">

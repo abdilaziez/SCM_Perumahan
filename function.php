@@ -7,7 +7,7 @@ $conn = mysqli_connect("localhost","root","","data_scm");
 
 //menambah Form Pembangunan
 if(isset($_POST['addnewform'])){
-    $namapelanggan = $_POST['namapelanggan'];
+    $email = $_POST['emailnya'];
     $deskripsirumah = $_POST['deskripsirumah'];
     $deskripsimaterial = $_POST['deskripsimaterial'];
     $deskripsipdam = $_POST['deskripsipdam'];
@@ -23,26 +23,34 @@ if(isset($_POST['addnewform'])){
     // pindahkan file
     $terupload = move_uploaded_file($namaSementara, $dirUpload.$namaFile);
 
-    if ($terupload) {
-        echo "Upload berhasil!<br/>";
-        echo "Link: <a href='".$dirUpload.$namaFile."'>".$namaFile."</a>";
-    } else {
-        echo "Upload Gagal!";
-    }
+    $ambildata = mysqli_query($conn, "select * from login where email = '$email'");
+    $datauser=mysqli_fetch_array($ambildata);
+    if($datauser){
+        $iduser = $datauser['iduser'];
+        if ($terupload) {
+            echo "Upload berhasil!<br/>";
+            echo "Link: <a href='".$dirUpload.$namaFile."'>".$namaFile."</a>";
+        } else {
+            echo "Upload Gagal!";
+        }
 
-    $addtotable = mysqli_query($conn,"insert into stock (namapelanggan, deskripsirumah, deskripsimaterial, deskripsipdam, deskripsipln, image) values('$namapelanggan','$deskripsirumah','$deskripsimaterial','$deskripsipdam','$deskripsipln','$namaGabung')");
+        $addtotable = mysqli_query($conn,"insert into stock (iduser, deskripsirumah, deskripsimaterial, deskripsipdam, deskripsipln, image) values('$iduser','$deskripsirumah','$deskripsimaterial','$deskripsipdam','$deskripsipln','$namaGabung')");
 
-    if($addtotable){
-        header('location:admin.php');
-    } else {
-        echo 'Gagal';
-        header('location:admin.php');
+        if($addtotable){
+            header('location:admin.php');
+        } else {
+            echo 'Gagal';
+            header('location:admin.php');
+        }
+    }else{
+        echo '<script language="javascript">alert("Email not found")</script>';
+        // header('location:admin.php');
     }
 }
 
 //menambah progres masuk
 if(isset($_POST['barangmasuk'])){
-    $barangnya = $_POST['barangnya'];
+    $email  = $_POST['emailnya'];
     $estimasi  = $_POST['estimasi'];
     $status = $_POST['status'];
 
@@ -56,20 +64,28 @@ if(isset($_POST['barangmasuk'])){
     // pindahkan file
     $terupload2 = move_uploaded_file($namaSementara2, $dirUpload2.$namaFile2);
 
-    if ($terupload2) {
-        echo "Upload berhasil!<br/>";
-        echo "Link: <a href='".$dirUpload2.$namaFile2."'>".$namaFile2."</a>";
-    } else {
-        echo "Upload Gagal!";
-    }
+    $ambildata = mysqli_query($conn, "select * from login where email = '$email'");
+    $datauser=mysqli_fetch_array($ambildata);
+    if($datauser){
+        $iduser = $datauser['iduser'];
+        if ($terupload2) {
+            echo "Upload berhasil!<br/>";
+            echo "Link: <a href='".$dirUpload2.$namaFile2."'>".$namaFile2."</a>";
+        } else {
+            echo "Upload Gagal!";
+        }
 
-    $addtomasuk = mysqli_query($conn,"insert into masuk (idbarang, estimasi, status, dokumentasi) values('$barangnya','$estimasi','$status','$namaGabung2')");
+        $addtomasuk = mysqli_query($conn,"insert into masuk (iduser, estimasi, status, dokumentasi) values('$iduser','$estimasi','$status','$namaGabung2')");
 
-    if($addtomasuk){
-        header('location:form_progres.php');
-    } else {
-        echo'Gagal';
-        header('location:form_progres.php');
+        if($addtomasuk){
+            header('location:form_progres.php');
+        } else {
+            echo'Gagal';
+            header('location:form_progres.php');
+        }
+    }else{
+        echo '<script language="javascript">alert("Email not found")</script>';
+        // header('location:admin.php');
     }
 }
 
@@ -116,7 +132,7 @@ if(isset($_POST['adminmasuk'])){
 //update info barang
 if(isset($_POST['updatebarang'])){
     $idb = $_POST['idb'];
-    $namapelanggan = $_POST['namapelanggan'];
+    $email = $_POST['email'];
     $deskripsirumah = $_POST['deskripsirumah'];
     $deskripsimaterial = $_POST['deskripsimaterial'];
     $deskripsipdam = $_POST['deskripsipdam'];
@@ -129,14 +145,23 @@ if(isset($_POST['updatebarang'])){
     $dirUpload = "barang/";
     $namaGabung = $dirUpload.$namaFile;
 
-    $update = mysqli_query($conn, "update stock set namapelanggan='$namapelanggan', deskripsirumah='$deskripsirumah', deskripsimaterial='$deskripsimaterial', deskripsipdam='$deskripsipdam', deskripsipln='$deskripsipln', image='$namaFile' where idbarang = '$idb'");
-    if($update){
-        // move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], "barang/".$_FILES["fileToUpload"]["name"]);
-        move_uploaded_file($namaSementara, $dirUpload.$namaFile);
-        header('location:admin.php');
+    
+    $ambildata = mysqli_query($conn, "select * from login where email = '$email'");
+    $datauser=mysqli_fetch_array($ambildata);
+    if($datauser){
+        $iduser = $datauser['iduser'];
+        $update = mysqli_query($conn, "update stock set iduser='$iduser', deskripsirumah='$deskripsirumah', deskripsimaterial='$deskripsimaterial', deskripsipdam='$deskripsipdam', deskripsipln='$deskripsipln', image='$namaGabung' where idbarang = '$idb'");
+        if($update){
+            // move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], "barang/".$_FILES["fileToUpload"]["name"]);
+            move_uploaded_file($namaSementara, $dirUpload.$namaFile);
+            header('location:admin.php');
+        }else{
+            echo 'Gagal';
+            header('location:admin.php');
+        }
     }else{
-        echo 'Gagal';
-        header('location:admin.php');
+        echo '<script language="javascript">alert("Email not found")</script>';
+        // header('location:admin.php');
     }
 }
 

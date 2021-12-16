@@ -2,6 +2,31 @@
 
 require  'function.php';
 
+if ( !isset($_SESSION["login"]) ) {
+    if($_SESSION['level'] == "developer"){
+        header('location:admin.php');
+    } elseif ($_SESSION['level'] == "customer") {
+        header('location:progres.php');
+    } elseif ($_SESSION['level'] == "material") {
+        header('location:admin_material.php');
+    } elseif ($_SESSION['level'] == "pln") {
+        header('location:admin_pln.php');
+    } elseif ($_SESSION['level'] == "pdam") {
+        header('location:admin_pdam.php');
+    }
+    exit;
+}
+
+if ($_SESSION['level'] == "customer") {
+    header('location:progres.php');
+} elseif ($_SESSION['level'] == "material") {
+    header('location:admin_material.php');
+} elseif ($_SESSION['level'] == "pln") {
+    header('location:admin_pln.php');
+} elseif ($_SESSION['level'] == "pdam") {
+    header('location:admin_pdam.php');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -71,7 +96,7 @@ require  'function.php';
                                     <thead>
                                         <tr>
                                             <th>Tanggal</th>
-                                            <th>Nama Pemilik</th>
+                                            <th>Email</th>
                                             <th>Waktu Pengerjaan</th>
                                             <th>Status Pembangunan</th>
                                             <th>Dokumentasi</th>
@@ -80,19 +105,19 @@ require  'function.php';
                                     </thead>
                                     <tbody>
                                     <?php
-                                        $ambilsemuadatastock = mysqli_query($conn, "SELECT * FROM masuk M, stock S where S.idbarang = M.idbarang");
+                                        $ambilsemuadatastock = mysqli_query($conn, "SELECT * FROM login INNER JOIN masuk ON login.iduser = masuk.iduser;");
+                                        $i = 1;
                                         while($data=mysqli_fetch_array($ambilsemuadatastock)){
                                             $tanggal = $data['tanggal'];
-                                            $namapelanggan = $data['namapelanggan'];
+                                            $email = $data['email'];
                                             $estimasi = $data['estimasi'];
                                             $status = $data['status'];
                                             $dokumentasi = $data['dokumentasi'];
-                                            $idb = $data['idbarang'];
 
                                         ?>
                                         <tr>
                                             <td><?=$tanggal;?></td>
-                                            <td><?=$namapelanggan;?></td>
+                                            <td><?=$email;?></td>
                                             <td><?=$estimasi;?></td>
                                             <td><?=$status;?></td>
                                             <td><img width="100" src="<?=$dokumentasi;?>" alt=""></td>
@@ -153,15 +178,15 @@ require  'function.php';
         <form method="post" enctype="multipart/form-data">
         <div class="modal-body" >
 
-        <select name="barangnya" class="form-select">
+        <select name="emailnya" class="form-select">
             <?php
-                $ambilsemuadatanya = mysqli_query($conn,"select * from stock");
+                $ambilsemuadatanya = mysqli_query($conn,"select * from login where level = 'customer'");
                 while($fetcharray = mysqli_fetch_array($ambilsemuadatanya)){
-                    $namapelanggan = $fetcharray['namapelanggan'];
-                    $idbarangnya = $fetcharray['idbarang'];
+                    $iduser = $fetcharray['iduser'];
+                    $email = $fetcharray['email']
             ?>
 
-            <option value="<?=$idbarangnya;?>"><?=$namapelanggan;?></option>
+            <option value="<?=$email;?>"><?=$email;?></option>
 
             <?php
                 }

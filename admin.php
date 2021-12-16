@@ -2,6 +2,31 @@
 
 require  'function.php';
 
+if ( !isset($_SESSION["login"]) ) {
+    if($_SESSION['level'] == "developer"){
+        header('location:admin.php');
+    } elseif ($_SESSION['level'] == "customer") {
+        header('location:progres.php');
+    } elseif ($_SESSION['level'] == "material") {
+        header('location:admin_material.php');
+    } elseif ($_SESSION['level'] == "pln") {
+        header('location:admin_pln.php');
+    } elseif ($_SESSION['level'] == "pdam") {
+        header('location:admin_pdam.php');
+    }
+    exit;
+}
+
+if ($_SESSION['level'] == "customer") {
+    header('location:progres.php');
+} elseif ($_SESSION['level'] == "material") {
+    header('location:admin_material.php');
+} elseif ($_SESSION['level'] == "pln") {
+    header('location:admin_pln.php');
+} elseif ($_SESSION['level'] == "pdam") {
+    header('location:admin_pdam.php');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -17,12 +42,6 @@ require  'function.php';
         <link href="css/styles_admin.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     </head>
-    <?php
-
-    echo $_SESSION['login'];
-
-
-    ?>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
@@ -77,7 +96,7 @@ require  'function.php';
                                     <thead>
                                         <tr>
                                             <th>Id Pemesanan</th>
-                                            <th>Nama Pelanggan</th>
+                                            <th>E-Mail</th>
                                             <th>Deskripsi Rumah</th>
                                             <th>Deskripsi Material</th>
                                             <th>Deskripsi PDAM</th>
@@ -89,10 +108,10 @@ require  'function.php';
                                     <tbody>
 
                                         <?php
-                                        $ambilsemuadatastock = mysqli_query($conn, "select * from stock");
+                                        $ambilsemuadatastock = mysqli_query($conn, "SELECT * FROM stock INNER JOIN login ON stock.iduser = login.iduser;");
                                         $i = 1;
                                         while($data=mysqli_fetch_array($ambilsemuadatastock)){
-                                            $namapelanggan = $data['namapelanggan'];
+                                            $email = $data['email'];
                                             $deskripsirumah = $data['deskripsirumah'];
                                             $deskripsimaterial = $data['deskripsimaterial'];
                                             $deskripsipdam = $data['deskripsipdam'];
@@ -103,7 +122,7 @@ require  'function.php';
                                         ?>
                                         <tr>
                                             <td><?=$i++;?></td>
-                                            <td><?=$namapelanggan;?></td>
+                                            <td><?=$email;?></td>
                                             <td><?=nl2br($deskripsirumah);?></td>
                                             <td><?=nl2br($deskripsimaterial);?></td>
                                             <td><?=nl2br($deskripsipdam);?></td>
@@ -134,7 +153,7 @@ require  'function.php';
                                                     <!-- Modal body -->
                                                     <form method="post" enctype="multipart/form-data">
                                                         <div class="modal-body">
-                                                            <input type="text" name="namapelanggan" value="<?=$namapelanggan;?>" class="form-control" placeholder="Nama Pelanggan" required>
+                                                            <input type="text" name="email" value="<?=$email;?>" class="form-control" placeholder="E-Mail" required>
                                                             <br>
                                                             <textarea name="deskripsirumah" class="form-control" placeholder="Deskripsi Rumah"><?php echo $data['deskripsirumah'];?></textarea>
                                                             <br>
@@ -224,7 +243,21 @@ require  'function.php';
         <!-- Modal body -->
         <form method="post" enctype="multipart/form-data">
         <div class="modal-body">
-        <input type="text" name="namapelanggan" placeholder="Nama Pelanggan" class="form-control" required>
+        
+        <select name="emailnya" class="form-select">
+            <?php
+                $ambilsemuadatanya = mysqli_query($conn,"select * from login where level = 'customer'");
+                while($fetcharray = mysqli_fetch_array($ambilsemuadatanya)){
+                    $iduser = $fetcharray['iduser'];
+                    $email = $fetcharray['email']
+            ?>
+
+            <option value="<?=$email;?>"><?=$email;?></option>
+
+            <?php
+                }
+            ?>
+        </select>
         <br>
         <!-- <input type="text" name="deskripsi" placeholder="Deskripsi Rumah" class="form-control" required>
         <br> -->

@@ -30,9 +30,16 @@ require  'function.php';
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item"><a class="nav-link" href="index.php">Beranda</a></li>
                             <li class="nav-item"><a class="nav-link" href="langkah.php">Langkah</a></li>
-                            <li class="nav-item"><a class="nav-link" href="progres.php">Progres</a></li>
-                            <li class="nav-item"><a class="nav-link" href="Login.php">Login</a></li>
-                            <li class="nav-item"><a class="nav-link" href="Logout.php">Logout</a></li>
+                            <?php 
+                            
+                            if(!isset($_SESSION['login'])){
+                                echo '<li class="nav-item"><a class="nav-link" href="Login.php">Login</a></li>';
+                            } else {
+                                echo '<li class="nav-item"><a class="nav-link" href="progres.php">Progres</a></li>';
+                                echo '<li class="nav-item"><a class="nav-link" href="Logout.php">Logout</a></li>';
+                            }
+
+                            ?>
                         </ul>
                     </div>
                 </div>

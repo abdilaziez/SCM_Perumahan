@@ -10,10 +10,9 @@ require 'function.php';
 
 $email = mysqli_escape_string($conn, $_POST['email']);
 $password = mysqli_escape_string($conn, $_POST['password']);
-$level = mysqli_escape_string($conn, $_POST['level']);
 
 //cek email, terdaftar atau tidak
-$cek_email = mysqli_query($conn, "SELECT * FROM login WHERE email = '$email' and level='$level'");
+$cek_email = mysqli_query($conn, "SELECT * FROM login WHERE email = '$email'");
 $email_valid = mysqli_fetch_array($cek_email);
 //uji jika email terdaftar
 if($email_valid){
@@ -22,21 +21,21 @@ if($email_valid){
     if($password == $email_valid['password']){
         //jika password sesuai
         //buat session
-        $_SESSION['email'] = $email_valid['email'];
+        $_SESSION['iduser'] = $email_valid['iduser'];
         $_SESSION['level'] = $email_valid['level'];
         $_SESSION['login'] = true;
 
 
         //uji level email
-        if($level == "developer"){
+        if($email_valid['level'] == "developer"){
             header('location:admin.php');
-        } elseif ($level == "customer") {
+        } elseif ($email_valid['level'] == "customer") {
             header('location:progres.php');
-        } elseif ($level == "material") {
+        } elseif ($email_valid['level'] == "material") {
             header('location:admin_material.php');
-        } elseif ($level == "pln") {
+        } elseif ($email_valid['level'] == "pln") {
             header('location:admin_pln.php');
-        } elseif ($level == "pdam") {
+        } elseif ($email_valid['level'] == "pdam") {
             header('location:admin_pdam.php');
         }
     } else{

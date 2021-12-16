@@ -3,7 +3,17 @@
 session_start();
 
 if ( isset($_SESSION["login"]) ) {
-    header('Location: admin.php');
+    if($_SESSION['level'] == "developer"){
+        header('location:admin.php');
+    } elseif ($_SESSION['level'] == "customer") {
+        header('location:progres.php');
+    } elseif ($_SESSION['level'] == "material") {
+        header('location:admin_material.php');
+    } elseif ($_SESSION['level'] == "pln") {
+        header('location:admin_pln.php');
+    } elseif ($_SESSION['level'] == "pdam") {
+        header('location:admin_pdam.php');
+    }
     exit;
 }
 
@@ -34,9 +44,16 @@ if ( isset($_SESSION["login"]) ) {
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item"><a class="nav-link" href="index.php">Beranda</a></li>
                             <li class="nav-item"><a class="nav-link" href="langkah.php">Langkah</a></li>
-                            <li class="nav-item"><a class="nav-link" href="progres.php">Progres</a></li>
-                            <li class="nav-item"><a class="nav-link" href="Login.php">Login</a></li>
-                            <li class="nav-item"><a class="nav-link" href="Logout.php">Logout</a></li>
+                            <?php 
+                            
+                            if(!isset($_SESSION['login'])){
+                                echo '<li class="nav-item"><a class="nav-link" href="Login.php">Login</a></li>';
+                            } else {
+                                echo '<li class="nav-item"><a class="nav-link" href="progres.php">Progres</a></li>';
+                                echo '<li class="nav-item"><a class="nav-link" href="Logout.php">Logout</a></li>';
+                            }
+
+                            ?>
                         </ul>
                     </div>
                 </div>
@@ -61,15 +78,6 @@ if ( isset($_SESSION["login"]) ) {
                                                 <div class="form-floating mb-3">
                                                     <input class="form-control" name="password" id="inputPassword" type="password" placeholder="Password" />
                                                     <label for="inputPassword">Password</label>
-                                                </div>
-                                                <div class="form-label">
-                                                    <select class="form-select" name="level">
-                                                        <option value="developer">Developer</option>
-                                                        <option value="customer">Customer</option>
-                                                        <option value="pln">PLN</option>
-                                                        <option value="pdam">PDAM</option>
-                                                        <option value="material">Material</option>
-                                                    </select>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                                     
